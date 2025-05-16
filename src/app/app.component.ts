@@ -5,12 +5,9 @@ import { PrimeNG } from 'primeng/config';
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+  template: '<router-outlet></router-outlet>',
 })
 export class AppComponent {
-  title = 'my-catalog';
-
   ptBrConfigs = {
     accept: 'Sim',
     addRule: 'Adicionar Regra',
