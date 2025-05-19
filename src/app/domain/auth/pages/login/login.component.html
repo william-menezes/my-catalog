@@ -1,1 +1,71 @@
-<p>login works!</p>
+<p-toast />
+
+<div class="w-full surface-card py-4 px-5 sm:px-8 border-round">
+  <div class="mb-5">
+    <div class="text-900 text-3xl font-bold mb-3">Entrar</div>
+  </div>
+
+  <form [formGroup]="loginForm" class="flex flex-column gap-3">
+    <div class="flex flex-col flex-wrap gap-2">
+      <label for="email">E-mail</label>
+
+      <input
+        formControlName="email"
+        pInputText
+        id="email"
+        type="text"
+        fluid="true"
+        aria-errormessage="email-hint-error"
+      />
+
+      @if (loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty ||
+      loginForm.get('email')?.touched)) {
+      <small id="email-hint-error" class="text-red-500 block">{{
+        getErrorMessage("email")
+      }}</small>
+      }
+    </div>
+
+    <div class="flex flex-col flex-wrap gap-2">
+      <div class="flex flex-col justify-content-between w-full">
+        <label for="password">Senha</label>
+        <a
+          class="font-medium no-underline text-blue-500 text-right cursor-pointer"
+          routerLink="./esqueci-minha-senha"
+          >Esqueceu sua senha?</a
+        >
+      </div>
+
+      <p-password
+        formControlName="password"
+        id="password"
+        class="w-full"
+        [feedback]="false"
+        [toggleMask]="true"
+        fluid="true"
+        aria-errormessage="password-hint-error"
+      />
+
+      @if (loginForm.get('password')?.invalid &&
+      (loginForm.get('password')?.dirty || loginForm.get('password')?.touched))
+      {
+      <small id="password-hint-error" class="text-red-500 block">{{
+        getErrorMessage("password")
+      }}</small>
+      }
+
+
+    </div>
+
+    <p-button label="Entrar" fluid="true" (onClick)="login()" />
+
+    <p class="mt-3 text-center">
+      Não tem uma conta?
+      <a
+        class="font-semibold no-underline cursor-pointer text-primary"
+        routerLink="sign-up"
+        >Cadastre-se</a
+      >
+    </p>
+  </form>
+</div>

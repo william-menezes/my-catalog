@@ -1,6 +1,6 @@
-import { Routes } from '@angular/router';
+import { Route } from '@angular/router';
 
-export const routes: Routes = [
+export const routes: Route[] = [
   {
     path: 'auth',
     loadComponent: () =>
@@ -10,6 +10,13 @@ export const routes: Routes = [
         path: '',
         loadChildren: () =>
           import('./domain/auth/auth.routes').then((m) => m.AUTH_ROUTES),
+      },
+      {
+        path: 'redefinir-senha',
+        loadComponent: () =>
+          import('./core/pages/reset-password/reset-password.component').then(
+            (m) => m.ResetPasswordComponent
+          ),
       },
     ],
   },
